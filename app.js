@@ -47,9 +47,9 @@ var currentBlock=null;
 for(var i=0;i<10;i++){
     var n=getRandom(1,3);
     currentBlock=GetBlock(n,currentBlock,null);
-    if(currentBlock.firstBlock==null){
-        currentBlock.firstBlock=currentBlock;
-    }
+    //if(currentBlock.firstBlock==null){
+    //    currentBlock.firstBlock=currentBlock;
+    //}
 }
 DrawBlock(currentBlock);
 function DrawBlock(block){
@@ -75,14 +75,13 @@ function DrawBlock(block){
 
 
 }
-function GetBlock(col,nextBlock,firstBlock){
+function GetBlock(col,nextBlock){
     return {
         col:col,
         width:100,
         height:150,
         x:0,
         y:0,
-        firstBlock:firstBlock,
         agoBlock:null,
         nextBlock:nextBlock
     }
@@ -99,22 +98,23 @@ function next(){
         nowTone++;
     }
 
-    var first=currentBlock.firstBlock;
-    if(first.nextBlock==null){
+    var first=currentBlock;
+    if(currentBlock.nextBlock==null){
         document.getElementById("alert_success").style.display="inline-block";
         clearLayout();
         return;
 
 
     }else {
-        first=first.nextBlock;
+        currentBlock=currentBlock.nextBlock;
+        //currentBlock.firstBlock=first;
+        currentBlock.agoBlock=null;
+        //currentBlock=first;
+        clearLayout();
+        DrawBlock(currentBlock);
     }
 
-    first.firstBlock=first;
-    first.agoBlock=null;
-    currentBlock=first;
-    clearLayout();
-    DrawBlock(first);
+
 
 }
 function clearLayout(){
@@ -143,9 +143,6 @@ function play(){
     for(var i=0;i<50;i++){
         var n=getRandom(1,3);
         currentBlock=GetBlock(n,currentBlock,null);
-        if(currentBlock.firstBlock==null){
-            currentBlock.firstBlock=currentBlock;
-        }
     }
     DrawBlock(currentBlock);
 
