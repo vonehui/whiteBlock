@@ -47,9 +47,6 @@ var currentBlock=null;
 for(var i=0;i<10;i++){
     var n=getRandom(1,3);
     currentBlock=GetBlock(n,currentBlock,null);
-    //if(currentBlock.firstBlock==null){
-    //    currentBlock.firstBlock=currentBlock;
-    //}
 }
 DrawBlock(currentBlock);
 function DrawBlock(block){
@@ -107,9 +104,7 @@ function next(){
 
     }else {
         currentBlock=currentBlock.nextBlock;
-        //currentBlock.firstBlock=first;
         currentBlock.agoBlock=null;
-        //currentBlock=first;
         clearLayout();
         DrawBlock(currentBlock);
     }
@@ -121,14 +116,12 @@ function clearLayout(){
     gameUI.clearRect(0,0,gameUI_width,gameUI_height);
     DrawLayout(3);
 }
-game_canvas.onclick=function(e){//给canvas添加点击事件
+game_canvas.onclick=function(e){
     console.log("当前块",currentBlock);
     e=e||event;//获取事件对象
-    //获取事件在canvas中发生的位置
     var x=e.clientX-game_canvas.offsetLeft;
     var y=e.clientY-game_canvas.offsetTop;
     console.log(x,y);
-    //如果事件位置在矩形区域中
     if(x>=currentBlock.x&&x<=currentBlock.x+currentBlock.width&&y>=currentBlock.y&&y<=currentBlock.y+currentBlock.height){
         next();
     }else {
