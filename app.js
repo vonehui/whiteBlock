@@ -13,7 +13,7 @@ game_tone[4]="song/5.mp3";
 game_tone[5]="song/6.mp3";
 game_tone[6]="song/7.mp3";
 
-nowTone=0;
+var nowTone=0;
 game_canvas.style.width="300px";
 game_canvas.style.height="500px";
 var gameUI_width=parseInt(game_canvas.style.width);
