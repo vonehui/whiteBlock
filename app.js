@@ -94,7 +94,6 @@ function next(){
     }else {
         nowTone++;
     }
-
     var first=currentBlock;
     if(currentBlock.nextBlock==null){
         document.getElementById("alert_success").style.display="inline-block";
