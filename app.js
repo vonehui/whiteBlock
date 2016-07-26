@@ -130,6 +130,9 @@ game_canvas.onclick=function(e){
         clearLayout();
     }
 }
+
+
+
 function play(){
     clearLayout();
     document.getElementById("alert_success").style.display="none";
